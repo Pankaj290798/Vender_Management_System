@@ -2,7 +2,6 @@ package com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.jwtService.im
 
 import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.dto.JwtAuthenticationResponse;
 import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.dto.SignInRequest;
-import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.dto.SignUpRequest;
 import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.exception.ApplicationException;
 import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.model.User;
 import com.pankaj.KAMJRITZTEX_Assignment.vendor_management_system.model.Role;
@@ -25,7 +24,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
 
-    public User signUp(SignUpRequest signUpRequest){
+    public User signUp(User signUpRequest){
         String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$";
         if (!signUpRequest.getPassword().matches(passwordPattern)) {
             throw new ApplicationException("Password must have at least one uppercase letter, one lowercase letter, one special character, and one digit.",

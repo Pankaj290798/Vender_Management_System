@@ -5,7 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Document(collection = "vendors")
@@ -15,8 +16,8 @@ public class Vendor {
     private String name;
     private String category;
     private String contactInfo;
-    private List<Contract> contracts;
-    private List<PerformanceMetric> performanceMetrics;
-    private List<Interaction> interactions;
+    private Set<Contract> contracts = new HashSet<>();
+    private Set<PerformanceMetric> performanceMetrics = new HashSet<>();
+    private Set<Interaction> interactions = new HashSet<>();
     private Date onboardingDate;
 }
