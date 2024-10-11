@@ -1,0 +1,457 @@
+{
+	"info": {
+		"_postman_id": "b775c207-94ea-4265-bf68-3ed771d3499f",
+		"name": "vms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26575256"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "onboardVendor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjgwMjE0NTIsImV4cCI6MTcyODAyMjg5Mn0.W_zd8FZ4wM2x1oZfWj87OmZ3wtkPBmBRL8kIGoO18HU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"ABC LTD\",\n   \"category\":\"It Services\",\n   \"contactInfo\":\"abc@conatctus.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/onboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"onboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "downloadFile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/dev41/Downloads/ASSIGNMENT 4.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/files/download/6708c25886d85731feb3c1c8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"files",
+								"download",
+								"6708c25886d85731feb3c1c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadFile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/dev41/Downloads/ASSIGNMENT 4.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/files/upload?file=/home/dev41/Downloads/ASSIGNMENT 4.docx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"files",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "/home/dev41/Downloads/ASSIGNMENT 4.docx"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addContractToVendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contractId\":\"c1\",\n    \"startDate\":\"2024-01-01\",\n    \"endDate\":\"2024-12-31\",\n    \"contractDetails\":\"security contract\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPerformanceMetricToVendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"metricId\":\"m1\",\n    \"contractId\":\"\",\n    \"description\":\"performance of vendor out of 10\",\n    \"score\":\"8\",\n    \"date\":\"2024-12-31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/performance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"performance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logInteractionForVendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n      \"interactionId\": \"INT001\",\n      \"details\": \"Meeting with vendor about new requirements\",\n        \"date\": \"2024-03-01\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/interactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"interactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateContractForVendor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contractId\":\"c1\",\n    \"startDate\":\"2024-01-01\",\n    \"endDate\":\"2024-12-31\",\n    \"contractDetails\":\"security contract\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePerformanceMetricForVendor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"metricId\":\"m1\",\n    \"contractId\":\"\",\n    \"description\":\"performance of vendor out of 10\",\n    \"score\":\"8\",\n    \"date\":\"2024-12-31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/performance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"performance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInteractionForVendor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n      \"interactionId\": \"INT001\",\n      \"details\": \"Meeting with vendor about new requirements\",\n        \"date\": \"2024-03-01\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/vendor_id/interactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"vendor_id",
+								"interactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getAllVendors",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getVendorsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/api/vendor_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"api",
+								"vendor_id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "general",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"email\":\"global@gmail.com\",\n    \"password\":\"Globaldmin@123\"\n  }\n  \n   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signIn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "superAdmin",
+			"item": [
+				{
+					"name": "saveAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Pankaj\",\n    \"lastName\":\"Chaudhari\",\n    \"email\":\"pankaj@gmail.com\",\n    \"password\":\"Pankaj@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/saveAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"saveAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAdmin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getAllAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAdmin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
