@@ -7,6 +7,7 @@ import java.util.Date;
 @Data
 public class PerformanceMetric {
     private String metricId;
+    private String contractId;
     private String description;
     private Double score;
     private Date date;
